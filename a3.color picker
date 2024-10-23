@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Text Analyzer</title>
+    <style>
+        #textbox {
+            width: 300px;
+            height: 50px;
+        }
+        
+        #output {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Text Analyzer</h2>
+    <textarea id="textbox" placeholder="Enter text here..!"></textarea><br><br>
+
+    <label for="bgColorPicker">Select Background Color: </label>
+    <input type="color" id="bgColorPicker"><br><br>
+
+    <label for="fgColorPicker">Select Foreground Color: </label>
+    <input type="color" id="fgColorPicker"><br><br>
+
+    <button onclick="analyzeText()">Analyze Text</button>
+
+    <div id="output">
+        <p>Alphabets: <span id="Number of alphabets"></span></p>
+        <p>Digits: <span id="Number of digits"></span></p>
+        <p>Special Characters: <span id="Number of special Characters"></span></p>
+    </div>
+
+    <script>
+        function analyzeText() {
+            var text = document.getElementById('textbox').value;
+            var alphabetCount = 0;
+            var digitCount = 0;
+            var specialCharCount = 0;
+
+            for (var i = 0; i < text.length; i++) {
+                var char = text.charAt(i);
+
+                if (/[a-zA-Z]/.test(char)) {
+                    alphabetCount++;
+                }
+            
+                else if (/[0-9]/.test(char)) {
+                    digitCount++;
+                }
+                else if (!/\s/.test(char)) {
+                    specialCharCount++;
+                }
+            }
+
+            document.getElementById('alphabets').innerText = alphabetCount;
+            document.getElementById('digits').innerText = digitCount;
+            document.getElementById('special Characters').innerText = specialCharCount;
+        }
+        document.getElementById('bgColorPicker').addEventListener('input', function() {
+            var color = document.getElementById('bgColorPicker').value;
+            document.getElementById('textbox').style.backgroundColor = color;
+        });
+
+        document.getElementById('fgColorPicker').addEventListener('input', function() {
+            var color = document.getElementById('fgColorPicker').value;
+            document.getElementById('textbox').style.color = color;
+        });
+    </script>
+</body>
+
+</html>

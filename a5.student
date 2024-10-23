@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Student Year and Branch</title>
+    <script>
+        function getStudentDetails() {
+            var rollNumber = document.getElementById("rollNumber").value;
+
+            var yearCode = rollNumber.substring(2, 4);  // Example: '19' from 'ES19CS01'
+            var branchCode = rollNumber.substring(4, 6); // Example: 'CS' from 'ES19CS01'
+
+            var yearOfStudy;
+            var currentYear = new Date().getFullYear() % 100; // Get the last two digits of the current year
+
+            var yearDifference = currentYear - parseInt(yearCode);
+            switch (yearDifference) {
+                case 0:
+                    yearOfStudy = "First year";
+                    break;
+                case 1:
+                    yearOfStudy = "Second year";
+                    break;
+                case 2:
+                    yearOfStudy = "Third year";
+                    break;
+                case 3:
+                    yearOfStudy = "Final year";
+                    break;
+                default:
+                    yearOfStudy = "Invalid year";
+            }
+            var branch;
+            switch (branchCode) {
+                case "CS":
+                    branch = "Computer Science and Engineering (CSE)";
+                    break;
+                case "EC":
+                    branch = "Electronics and Communication Engineering (ECE)";
+                    break;
+                case "EE":
+                    branch = "Electrical Engineering (EE)";
+                    break;
+                case "ME":
+                    branch = "Mechanical Engineering (ME)";
+                    break;
+                case "CE":
+                    branch = "Civil Engineering (CE)";
+                    break;
+                default:
+                    branch = "Unknown branch";
+            }
+            document.getElementById("result").innerHTML = "Year of Study: " + yearOfStudy + "<br>Branch: " + branch;
+        }
+    </script>
+</head>
+<body>
+    <h2>Enter Student Roll Number</h2>
+    <input type="text" id="rollNumber" placeholder="Enter roll number (e.g., ES19CS01)">
+    <button onclick="getStudentDetails()">Submit</button>
+    <p id="result"></p>
+</body>
+</html>

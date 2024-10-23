@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComboBox Operations</title>
+    <script>
+        function addItem() {
+            const comboBox = document.getElementById("comboBox");
+            const newItem = document.getElementById("newItem").value;
+
+            if (newItem) {
+                const option = document.createElement("option");
+                option.text = newItem;
+                comboBox.add(option);
+                document.getElementById("newItem").value = ""; 
+            } else {
+                alert("Please enter a value to add.");
+            }
+        }
+
+        function removeItem() {
+            const comboBox = document.getElementById("comboBox");
+            const selectedIndex = comboBox.selectedIndex;
+
+            if (selectedIndex !== -1) {
+                comboBox.remove(selectedIndex);
+            } else {
+                alert("Please select an item to remove.");
+            }
+        }
+
+     
+        function displaySelectedItem() {
+            const comboBox = document.getElementById("comboBox");
+            const selectedItem = comboBox.options[comboBox.selectedIndex].text;
+
+            if (comboBox.selectedIndex !== -1) {
+                document.getElementById("display").innerText = "Selected Item: " + selectedItem;
+            } else {
+                alert("Please select an item to display.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>ComboBox Operations</h2>
+
+    <select id="comboBox">
+        <option value="Item 1">Html</option>
+        <option value="Item 2">css</option>
+        <option value="Item 3">javascript</option>
+    </select>
+    <br><br>
+
+    <input type="text" id="newItem" placeholder="Enter new item">
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="removeItem()">Remove Item</button>
+    <button onclick="displaySelectedItem()">Display Selected Item</button>
+
+    <p id="display"></p>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Password Generator</title>
+</head>
+
+<body>
+
+    <button onclick="generatePassword()">Generate Password</button>
+    <p id="password"></p>
+
+    <script>
+        function generatePassword() {
+            const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
+            const digits = '0123456789';
+            const allChars = upperCaseChars + lowerCaseChars + digits;
+
+            let password = [];
+
+            for (let i = 0; i < 2; i++) {
+                password.push(upperCaseChars[Math.floor(Math.random() * upperCaseChars.length)]);
+            }
+            password.push(digits[Math.floor(Math.random() * digits.length)]);
+            for (let i = 0; i < 5; i++) {
+                password.push(allChars[Math.floor(Math.random() * allChars.length)]);
+            }
+
+            password = password.sort(() => Math.random() - 0.5);
+
+            document.getElementById("password").innerText = password.join('');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Date of Birth Validation</h1>
+    <input type="date" id="dob" min="2000-01-01" max="2020-09-01" value="2020-01-01">
+    <p id="dobMessage"></p>
+
+    <script>
+        document.getElementById('dob').addEventListener('change', function() {
+            const selectedDate = new Date(this.value);
+            const minDate = new Date('2000-01-01');
+            const maxDate = new Date('2020-09-01');
+
+            if (selectedDate >= minDate && selectedDate <= maxDate) {
+                document.getElementById('dobMessage').innerText = "Valid Date of Birth";
+            } else {
+                document.getElementById('dobMessage').innerText = "Invalid Date of Birth";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

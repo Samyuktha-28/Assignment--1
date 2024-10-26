@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dynamic Table Styling</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dynamic Table Styling</h1>
+
+    <table id="myTable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Ram</td>
+            <td>25</td>
+            <td>USA</td>
+        </tr>
+        <tr>
+            <td>shreya</td>
+            <td>30</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Suresh</td>
+            <td>27</td>
+            <td>Australia</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <label for="borderWidth">Change Border Width: </label>
+    <select id="borderWidth" onchange="changeBorderWidth()">
+        <option value="1">1px</option>
+        <option value="2">2px</option>
+        <option value="3">3px</option>
+        <option value="4">4px</option>
+        <option value="5">5px</option>
+    </select>
+
+    <br><br>
+
+    <label for="foregroundColor">Change Foreground Color: </label>
+    <input type="color" id="foregroundColor" onchange="changeForegroundColor()">
+
+    <br><br>
+
+    <label for="backgroundColor">Change Background Color: </label>
+    <input type="color" id="backgroundColor" onchange="changeBackgroundColor()">
+
+    <br><br>
+
+    <label for="textAlign">Change Text Alignment: </label>
+    <select id="textAlign" onchange="changeTextAlignment()">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+    </select>
+
+    <script>
+        function changeBorderWidth() {
+            var table = document.getElementById("myTable");
+            var borderWidth = document.getElementById("borderWidth").value;
+            table.style.borderWidth = borderWidth + "px";
+            var cells = table.getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].style.borderWidth = borderWidth + "px";
+            }
+        }
+
+
+        function changeForegroundColor() {
+            var color = document.getElementById("foregroundColor").value;
+            var cells = document.getElementById("myTable").getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].style.color = color;
+            }
+        }
+
+
+        function changeBackgroundColor() {
+            var color = document.getElementById("backgroundColor").value;
+            var cells = document.getElementById("myTable").getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].style.backgroundColor = color;
+            }
+        }
+
+
+        function changeTextAlignment() {
+            var alignment = document.getElementById("textAlign").value;
+            var cells = document.getElementById("myTable").getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].style.textAlign = alignment;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

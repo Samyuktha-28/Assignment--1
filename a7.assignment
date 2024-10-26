@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Paragraph Text Operations</h1>
+
+    <p id="paragraph">HTML is the standard markup language to create web pages</p>
+
+    <label for="fontType">Select Font Type: </label>
+    <select id="fontType" onchange="changeFontType()">
+  <option value="Arial">Arial</option>
+  <option value="Verdana">Verdana</option>
+  <option value="Times New Roman">Times New Roman</option>
+</select>
+    <br><br>
+    <label for="fontSize">Select Font Size: </label>
+    <select id="fontSize" onchange="changeFontSize()">
+  <option value="12px">12px</option>
+  <option value="16px">16px</option>
+  <option value="20px">20px</option>
+</select>
+    <br><br>
+    <label for="fontColor">Select Font Color: </label>
+    <input type="color" id="fontColor" onchange="changeFontColor()">
+
+    <script>
+        function changeFontType() {
+            const fontType = document.getElementById('fontType').value;
+            document.getElementById('paragraph').style.fontFamily = fontType;
+        }
+
+        function changeFontSize() {
+            const fontSize = document.getElementById('fontSize').value;
+            document.getElementById('paragraph').style.fontSize = fontSize;
+        }
+
+        function changeFontColor() {
+            const fontColor = document.getElementById('fontColor').value;
+            document.getElementById('paragraph').style.color = fontColor;
+        }
+    </script>
+
+</body>
+
+</html>
